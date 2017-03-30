@@ -1,0 +1,41 @@
+{% block epic_editor_widget %}
+    <div id="{{ id }}_container" class="epic_editor_container"></div>
+    <textarea {{ block('widget_attributes') }} style="display: none;">{{ value }}</textarea>
+
+    {% block help %}
+        <div class="epic_editor_help">
+            <p>
+                Enter your content using the
+                <a href="http://markable.in/file/aa191728-9dc7-11e1-91c7-984be164924a/" target="_blank">Markdown</a> language
+            </p>
+        </div>
+    {% endblock %}
+
+    {% block javascript %}
+        <script>
+            (function(){
+                var options, editor;
+
+                if (typeof(EpicEditor) == "undefined") {
+                    console.log('EpicEditor not found, have you included the epiceditor.min.js file?');
+
+                    return false;
+                }
+
+                options = {{ options|raw }};
+                options.container = '{{ id }}_container';
+                options.textarea  = '{{ id }}';
+
+
+
+                editor = new EpicEditor(options).load();
+
+                {% block custom_javascript %}
+
+                {% endblock %}
+
+                return true;
+            })()
+        </script>
+    {% endblock %}
+{% endblock %}

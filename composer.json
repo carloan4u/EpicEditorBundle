@@ -1,0 +1,30 @@
+{
+    "name": "cl4u/epic-editor-bundle",
+    "description": "Use EpicEditor in your Symfony 2 Forms",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gareth Jones",
+            "email": "gareth.jones@carloan4u.co.uk"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "symfony/framework-bundle": ">=2.1",
+        "symfony/form": ">=2.1"
+    },
+    "require-dev": {
+        "twig/twig": "1.*",
+        "phpunit/phpunit": "~3.7"
+    },
+    "autoload": {
+        "psr-0": { "Cl4u\\Bundle\\EpicEditorBundle": "" }
+    },
+    "target-dir": "Cl4u/Bundle/EpicEditorBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd"
+        >
+    <parameters>
+        <parameter key="cl4u_epic_editor.form.type.epic_editor.class">Cl4u\Bundle\EpicEditorBundle\Form\EpicEditorType</parameter>
+        <parameter key="cl4u_epic_editor.twig.epic_editor_extension.class">Cl4u\Bundle\EpicEditorBundle\Twig\Extension\EpicEditorExtension</parameter>
+        <parameter key="cl4u_epic_editor.helper.javascript_asset_helper.class">Cl4u\Bundle\EpicEditorBundle\Helper\JavascriptAssetHelper</parameter>
+        <parameter key="cl4u_epic_editor.inflector.camelizer">Cl4u\Bundle\EpicEditorBundle\Inflector\Camelizer</parameter>
+        <parameter key="cl4u_epic_editor.formatter.json_options_formatter">Cl4u\Bundle\EpicEditorBundle\Formatter\JsonOptionsFormatter</parameter>
+        <parameter key="cl4u_epic_editor.js_path" />
+        <parameter key="cl4u_epic_editor.options" />
+    </parameters>
+    <services>
+        <service id="cl4u_epic_editor.form.type.epic_editor" class="%cl4u_epic_editor.form.type.epic_editor.class%">
+            <argument>%cl4u_epic_editor.options%</argument>
+            <argument type="service" id="cl4u_epic_editor.formatter.json_options_formatter" />
+            <tag name="form.type" alias="epic_editor" />
+        </service>
+        <service id="cl4u_epic_editor.twig.epic_editor_extension" class="%cl4u_epic_editor.twig.epic_editor_extension.class%">
+            <argument type="service" id="cl4u_epic_editor.helper.javascript_helper" />
+            <tag name="twig.extension" />
+        </service>
+        <service id="cl4u_epic_editor.helper.javascript_helper" class="%cl4u_epic_editor.helper.javascript_asset_helper.class%">
+            <argument type="service" id="service_container" />
+            <argument>%cl4u_epic_editor.js_path%</argument>
+        </service>
+        <service id="cl4u_epic_editor.inflector.camelizer" class="%cl4u_epic_editor.inflector.camelizer%">
+        </service>
+        <service id="cl4u_epic_editor.formatter.json_options_formatter" class="%cl4u_epic_editor.formatter.json_options_formatter%">
+            <argument type="service" id="cl4u_epic_editor.inflector.camelizer" />
+        </service>
+    </services>
+</container>
